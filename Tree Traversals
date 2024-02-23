@@ -1,0 +1,50 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+# Following is the Binary Tree node structure:
+class BinaryTreeNode :
+    def __init__(self, data) :
+        self.data = data
+        self.left = None
+        self.right = None
+class Solution():
+    def __init__(self):
+        pass
+    def preorderArrSetup(self):
+        self.preOrder=[]  
+    def inorderArrSetup(self):
+        self.inorder=[] 
+    def postorderArrSetup(self):
+        self.postorder=[]  
+    def inorderTra(self,root):
+        if root is not None:
+            self.inorderTra(root.left)
+            self.inorder.append(root.data)
+            self.inorderTra(root.right)
+    def postOrderTra(self,root):
+        if root is not None:
+            self.postOrderTra(root.left)
+            self.postOrderTra(root.right)
+            self.postorder.append(root.data)
+
+    def preOrderTra(self,root):
+        if root is not None:
+            self.preOrder.append(root.data)
+            self.preOrderTra(root.left)
+            self.preOrderTra(root.right)
+def getTreeTraversal(root):
+    # Write your code here.
+    final=[]
+    obj = Solution()
+    obj.inorderArrSetup()
+    obj.inorderTra(root)
+    final.append(obj.inorder)
+    obj.preorderArrSetup()
+    obj.preOrderTra(root)
+    final.append(obj.preOrder)
+    obj.postorderArrSetup()
+    obj.postOrderTra(root)
+    final.append(obj.postorder)
+    return final
