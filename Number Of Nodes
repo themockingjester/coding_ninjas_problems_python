@@ -1,0 +1,5 @@
+from typing import *
+
+def numberOfNodes(N : int) -> int:
+    # Write your code here.
+    return pow(2,N-1)
